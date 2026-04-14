@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
   <meta charset="utf-8">
   <title>Gayretli Halı Yıkama</title>
   <script>
-    // Redirect all paths to index.html with hash-based navigation
     var path = window.location.pathname;
-    var hash = window.location.hash;
-    if (path !== '/' && path !== '/index.html') {
-      window.location.replace('/#' + path.replace(/^\//, ''));
-    } else if (hash) {
-      window.location.replace('/' + hash);
+    // Known app routes - redirect to root with path preserved via sessionStorage
+    if (path === '/gizlilik-politikasi' || path === '/gizlilik-politikasi/') {
+      // GitHub Pages SPA fallback: rewrite URL so React sees it
+      var newUrl = '/?p=' + encodeURIComponent(path);
+      window.location.replace(newUrl);
     } else {
       window.location.replace('/');
     }
